@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f8;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: rgb(5, 11, 61);
+        }
+
+        form {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #E3E4FA;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 95%;
+            padding: 10px;
+            margin-top: 3px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #f5f0f3;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        div {
+            border: 1.75px solid #333;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="background-color: #f4f4f4;">Enter Course Details</h2>
+    <form id="courseForm" method="post">
+        <label for="numCourses">Number of Courses:</label>
+        <input type="number" id="numCourses" name="numCourses" required><br>
+
+        <div id="courseDetails"></div>
+
+        <button type="button" id="addCourse">Add Course</button>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        let numCourses = 0;  // Initialize with 0 courses
+
+        document.getElementById("addCourse").addEventListener("click", function () {
+            numCourses++;  // Increment the course number
+            const courseDetailsDiv = document.getElementById("courseDetails");
+            const courseNumber = numCourses;
+
+            const courseEntry = document.createElement("div");
+            courseEntry.innerHTML = `
+                <h3>Course Details for Course ${courseNumber}</h3>
+                <label for="programName${courseNumber}">Program Name:</label>
+                <input type="text" id="programName${courseNumber}" name="programName${courseNumber}" required><br>
+
+                <label for="year${courseNumber}">Year:</label>
+                <input type="text" id="year${courseNumber}" name="year${courseNumber}" required><br>
+
+                <label for="semester${courseNumber}">Semester:</label>
+                <input type="text" id="semester${courseNumber}" name="semester${courseNumber}" required><br>
+
+                <label for="courseName${courseNumber}">Course Name:</label>
+                <input type="text" id="courseName${courseNumber}" name="courseName${courseNumber}" required><br>
+
+                <label for="facultyCount${courseNumber}">Number of Faculty:</label>
+                <input type="number" id="facultyCount${courseNumber}" name="facultyCount${courseNumber}" required><br>
+
+                <label for="facultyNames${courseNumber}">Names of All Faculty (comma-separated):</label>
+                <input type="text" id="facultyNames${courseNumber}" name="facultyNames${courseNumber}" required><br>
+
+                <label for="eventName${courseNumber}">Name of the Event (Exam):</label>
+                <input type="text" id="eventName${courseNumber}" name="eventName${courseNumber}" required><br>
+
+                <label for="totalMarks${courseNumber}">Total Marks:</label>
+                <input type="number" id="totalMarks${courseNumber}" name="totalMarks${courseNumber}" required><br>
+
+                <label for="partAQuestions${courseNumber}">Number of Questions (PART-A):</label>
+                <input type="number" id="partAQuestions${courseNumber}" name="partAQuestions${courseNumber}" required><br>
+
+                <label for="partBQuestions${courseNumber}">Number of Questions (PART-B):</label>
+                <input type="number" id="partBQuestions${courseNumber}" name="partBQuestions${courseNumber}" required><br>
+
+                <label for="partCQuestions${courseNumber}">Number of Questions (PART-C):</label>
+                <input type="number" id="partCQuestions${courseNumber}" name="partCQuestions${courseNumber}" required><br>
+            `;
+
+            courseDetailsDiv.appendChild(courseEntry);
+        });
+    </script>
+</body>
+</html>

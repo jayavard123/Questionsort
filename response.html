@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Distribution</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+        }
+
+        h2 {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #3498db;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        p {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Distribution Results</h1>
+
+    <h2>Course Allocation</h2>
+    <table border="1">
+        <tr>
+            <th>Faculty</th>
+            <th>Allocated Questions</th>
+        </tr>
+        {% for i in range(course_data[0][4]) %}
+        <tr>
+            <td>{{course_data[0][5].split(',')[i] }}</td>
+            <td>{{course_data[0][11:][i] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Other Course Information</h2>
+    <p>Total Marks: {{course_data[0][0] }}</p>
+    <p>Total Faculties: {{course_data[0][1] }}</p>
+    <p>Minimum Questions per Faculty: {{course_data[0][2] }}</p>
+    </p>
+</body>
+</html>
